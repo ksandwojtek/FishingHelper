@@ -10,15 +10,19 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import static net.ksndq.fishinghelper.misc.Configuration.*;
+
 @Mod.EventBusSubscriber(modid = FishingHelper.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class KeyBindingsHandler {
     @SubscribeEvent
     public static void clientTick(TickEvent.ClientTickEvent event) {
+        assert Minecraft.getInstance().player != null;
         if (!KeyBindings.INSTANCE.switchFishing.isDown()) {return;}
         if(KeyBindings.INSTANCE.switchFishing.consumeClick()) {
             assert Minecraft.getInstance().player != null;
-            String message = !FishingHelper.enabled ? "§a§lEnabled" : "§c§lDisabled";
-            Minecraft.getInstance().player.sendSystemMessage(Component.literal(FishingHelper.prefix + message));
-            FishingHelper.enabled = !FishingHelper.enabled;
+            String message = !enabled() ? "§a§lEnabled" : "§c§lDisabled";
+            Minecraft.getInstance().player.sendSystemMessage(Component.literal(prefix() + message));
+            toggleEnabled();
+//            FishingHelper.enabled = !FishingHelper.enabled;
     }}
 }
