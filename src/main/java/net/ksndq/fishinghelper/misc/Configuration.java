@@ -16,12 +16,16 @@ public class Configuration {
     }
 
     public final BooleanValue enabled;
+    public final BooleanValue slugMode;
     public final ForgeConfigSpec.ConfigValue<String> prefix;
 
     Configuration(ForgeConfigSpec.Builder builder) {
         enabled = builder
                 .comment("enable fishing helper")
                 .define("enabled", true);
+        slugMode = builder
+                .comment("slug fish mode")
+                .define("mode_enabled", false);
         prefix = builder
                 .comment("general command output prefix")
                 .define("text", "§3\uD83C\uDFA3 §b§lFishingHelper §c- §r");
@@ -29,6 +33,10 @@ public class Configuration {
 
     public static boolean enabled() {
         return CONFIG.enabled.get();
+    }
+
+    public static boolean slugMode() {
+        return CONFIG.slugMode.get();
     }
 
     public static String prefix() {

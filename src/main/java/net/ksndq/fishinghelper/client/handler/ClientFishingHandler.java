@@ -12,11 +12,13 @@ import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import static net.ksndq.fishinghelper.client.handler.FishingBobberHandler.bobberTime;
 import static net.ksndq.fishinghelper.misc.Configuration.enabled;
+import static net.ksndq.fishinghelper.misc.Configuration.slugMode;
 
 
 @Mod.EventBusSubscriber(modid = FishingHelper.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public class ClientForgeHandler {
+public class ClientFishingHandler {
 
     private static boolean isEventRunning = false;
     private static int counter = 4;
@@ -30,6 +32,9 @@ public class ClientForgeHandler {
         if (player == null || player.hasContainerOpen()) return;
         ItemStack itemStack = player.getInventory().getSelected();
         if (itemStack.getItem() != Items.FISHING_ROD) return;
+        if (slugMode()) {
+            if (bobberTime < 20) return;
+        }
         if (!event.getName().equals("block.note_block.pling") || event.getSound().getPitch() != 1.0) return;
         isEventRunning = true;
         counter -= 1;

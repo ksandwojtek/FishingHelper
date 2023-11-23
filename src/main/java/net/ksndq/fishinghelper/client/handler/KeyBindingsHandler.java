@@ -16,13 +16,11 @@ import static net.ksndq.fishinghelper.misc.Configuration.*;
 public class KeyBindingsHandler {
     @SubscribeEvent
     public static void clientTick(TickEvent.ClientTickEvent event) {
-        assert Minecraft.getInstance().player != null;
         if (!KeyBindings.INSTANCE.switchFishing.isDown()) {return;}
         if(KeyBindings.INSTANCE.switchFishing.consumeClick()) {
             assert Minecraft.getInstance().player != null;
             String message = !enabled() ? "§a§lEnabled" : "§c§lDisabled";
             Minecraft.getInstance().player.sendSystemMessage(Component.literal(prefix() + message));
             toggleEnabled();
-//            FishingHelper.enabled = !FishingHelper.enabled;
     }}
 }

@@ -8,6 +8,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import static net.ksndq.fishinghelper.misc.Configuration.enabled;
 import static net.ksndq.fishinghelper.utils.FishCountUtils.saveFishCount;
 
 @Mod.EventBusSubscriber(modid = FishingHelper.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
@@ -15,11 +16,11 @@ public class ClientChatMessageHandler {
 
     @SubscribeEvent
     public static void clientChatMessage(ClientChatReceivedEvent event) {
+        if (!enabled()) return;
         String msg = event.getMessage().getString();
         if (!msg.startsWith("TROPHY FISH!") || Minecraft.getInstance().player == null) return;
         if (!String.valueOf(Minecraft.getInstance().player.connection.getConnection().getRemoteAddress()).contains("hypixel.net"))
             return;
-        System.out.println(msg);
         msg = msg.substring(26).replace(".", "");
         String[] arguments = msg.split(" ");
         String fishRarity, fishType;
