@@ -1,22 +1,21 @@
-package net.ksndq.fishinghelper.client.handler;
+package ksndq.fishinghelper.client.handler;
 
-
-import net.ksndq.fishinghelper.FishingHelper;
+import ksndq.fishinghelper.ModInfo;
+import ksndq.fishinghelper.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static net.ksndq.fishinghelper.misc.Configuration.enabled;
-import static net.ksndq.fishinghelper.utils.FishCountUtils.saveFishCount;
+import static ksndq.fishinghelper.utils.FishCountUtils.saveFishCount;
 
-@Mod.EventBusSubscriber(modid = FishingHelper.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = ModInfo.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ClientChatMessageHandler {
 
     @SubscribeEvent
     public static void clientChatMessage(ClientChatReceivedEvent event) {
-        if (!enabled()) return;
+        if (!ModConfig.FISHING_HELPER_ENABLED.get()) return;
         String msg = event.getMessage().getString();
         if (!msg.startsWith("TROPHY FISH!") || Minecraft.getInstance().player == null) return;
         if (!String.valueOf(Minecraft.getInstance().player.connection.getConnection().getRemoteAddress()).contains("hypixel.net"))

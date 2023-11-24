@@ -1,4 +1,4 @@
-package net.ksndq.fishinghelper.utils;
+package ksndq.fishinghelper.utils;
 
 import com.google.gson.*;
 import net.minecraftforge.fml.loading.FMLPaths;
