@@ -1,7 +1,7 @@
-package ksndq.fishinghelper.client.handler;
+package ksndq.fishinghelper.event.fishing;
 
+import ksndq.fishinghelper.ModConfig;
 import ksndq.fishinghelper.ModInfo;
-import ksndq.fishinghelper.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public class FishingBobberHandler {
+public class FishingBobberEvent {
 
     public static double bobberTime;
 

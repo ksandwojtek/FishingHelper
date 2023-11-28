@@ -1,6 +1,5 @@
 package ksndq.fishinghelper;
 
-import ksndq.fishinghelper.config.ModConfig;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;

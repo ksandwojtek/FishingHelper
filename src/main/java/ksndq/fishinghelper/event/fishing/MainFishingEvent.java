@@ -1,7 +1,7 @@
-package ksndq.fishinghelper.client.handler;
+package ksndq.fishinghelper.event.fishing;
 
+import ksndq.fishinghelper.ModConfig;
 import ksndq.fishinghelper.ModInfo;
-import ksndq.fishinghelper.config.ModConfig;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public class ClientFishingHandler {
+public class MainFishingEvent {
 
     private static boolean isEventRunning = false;
     private static int counter = 4;
@@ -28,7 +28,7 @@ public class ClientFishingHandler {
         ItemStack itemStack = player.getInventory().getSelected();
         if (itemStack.getItem() != Items.FISHING_ROD) return;
         if (ModConfig.SLUGFISH_MODE_ENABLED.get()) {
-            if (FishingBobberHandler.bobberTime < 20) return;
+            if (FishingBobberEvent.bobberTime < 20) return;
         }
         if (!event.getName().equals("block.note_block.pling") || event.getSound().getPitch() != 1.0) return;
         isEventRunning = true;

@@ -1,7 +1,7 @@
 package ksndq.fishinghelper.event;
 
 import ksndq.fishinghelper.ModInfo;
-import ksndq.fishinghelper.client.KeyBindings;
+import ksndq.fishinghelper.misc.KeyBindings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -1,4 +1,4 @@
-package ksndq.fishinghelper.client;
+package ksndq.fishinghelper.misc;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import ksndq.fishinghelper.ModInfo;

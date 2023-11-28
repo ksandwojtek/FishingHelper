@@ -1,7 +1,7 @@
-package ksndq.fishinghelper.client.handler;
+package ksndq.fishinghelper.event.fishing;
 
+import ksndq.fishinghelper.ModConfig;
 import ksndq.fishinghelper.ModInfo;
-import ksndq.fishinghelper.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import static ksndq.fishinghelper.utils.FishCountUtils.saveFishCount;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public class ClientChatMessageHandler {
+public class FishCountEvent {
 
     @SubscribeEvent
     public static void clientChatMessage(ClientChatReceivedEvent event) {
